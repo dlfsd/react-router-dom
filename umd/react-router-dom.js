@@ -2818,6 +2818,8 @@
 
   var hoistNonReactStatics_cjs = hoistNonReactStatics;
 
+  // TODO: Replace with React.createContext once we can assume React 16+
+
   var createNamedContext = function createNamedContext(name) {
     var context = index();
     context.displayName = name;
@@ -2827,6 +2829,7 @@
   var context =
   /*#__PURE__*/
   createNamedContext("Router");
+
   /**
    * The public API for putting history on context.
    */
@@ -2914,13 +2917,13 @@
     };
 
     Router.prototype.componentDidUpdate = function (prevProps) {
-        warning(prevProps.history === this.props.history, "You cannot change <Router history>")  ;
+       warning(prevProps.history === this.props.history, "You cannot change <Router history>") ;
     };
   }
+
   /**
    * The public API for a <Router> that stores location in memory.
    */
-
 
   var MemoryRouter =
   /*#__PURE__*/
@@ -2961,7 +2964,7 @@
     };
 
     MemoryRouter.prototype.componentDidMount = function () {
-        warning(!this.props.history, "<MemoryRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { MemoryRouter as Router }`.")  ;
+       warning(!this.props.history, "<MemoryRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { MemoryRouter as Router }`.") ;
     };
   }
 
@@ -2994,17 +2997,17 @@
 
     return Lifecycle;
   }(React__default.Component);
+
   /**
    * The public API for prompting the user before navigating away from a screen.
    */
-
 
   function Prompt(_ref) {
     var message = _ref.message,
         _ref$when = _ref.when,
         when = _ref$when === void 0 ? true : _ref$when;
     return React__default.createElement(context.Consumer, null, function (context) {
-      !context ?    invariant(false, "You should not use <Prompt> outside a <Router>")    : void 0;
+      !context ?  invariant(false, "You should not use <Prompt> outside a <Router>")  : void 0;
       if (!when || context.staticContext) return null;
       var method = context.history.block;
       return React__default.createElement(Lifecycle, {
@@ -3066,10 +3069,10 @@
       pretty: true
     });
   }
+
   /**
    * The public API for navigating programmatically with a component.
    */
-
 
   function Redirect(_ref) {
     var computedMatch = _ref.computedMatch,
@@ -3077,7 +3080,7 @@
         _ref$push = _ref.push,
         push = _ref$push === void 0 ? false : _ref$push;
     return React__default.createElement(context.Consumer, null, function (context) {
-      !context ?    invariant(false, "You should not use <Redirect> outside a <Router>")    : void 0;
+      !context ?  invariant(false, "You should not use <Redirect> outside a <Router>")  : void 0;
       var history = context.history,
           staticContext = context.staticContext;
       var method = push ? history.push : history.replace;
@@ -3203,7 +3206,7 @@
 
   function evalChildrenDev(children, props, path) {
     var value = children(props);
-      warning(value !== undefined, "You returned `undefined` from the `children` function of " + ("<Route" + (path ? " path=\"" + path + "\"" : "") + ">, but you ") + "should have returned a React element or `null`")  ;
+     warning(value !== undefined, "You returned `undefined` from the `children` function of " + ("<Route" + (path ? " path=\"" + path + "\"" : "") + ">, but you ") + "should have returned a React element or `null`") ;
     return value || null;
   }
   /**
@@ -3226,7 +3229,7 @@
       var _this = this;
 
       return React__default.createElement(context.Consumer, null, function (context$1) {
-        !context$1 ?    invariant(false, "You should not use <Route> outside a <Router>")    : void 0;
+        !context$1 ?  invariant(false, "You should not use <Route> outside a <Router>")  : void 0;
         var location = _this.props.location || context$1.location;
         var match = _this.props.computedMatch ? _this.props.computedMatch // <Switch> already computed the match for us
         : _this.props.path ? matchPath(location.pathname, _this.props) : context$1.match;
@@ -3272,14 +3275,14 @@
     };
 
     Route.prototype.componentDidMount = function () {
-        warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.component), "You should not use <Route component> and <Route children> in the same route; <Route component> will be ignored")  ;
-        warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.render), "You should not use <Route render> and <Route children> in the same route; <Route render> will be ignored")  ;
-        warning(!(this.props.component && this.props.render), "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored")  ;
+       warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.component), "You should not use <Route component> and <Route children> in the same route; <Route component> will be ignored") ;
+       warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.render), "You should not use <Route render> and <Route children> in the same route; <Route render> will be ignored") ;
+       warning(!(this.props.component && this.props.render), "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored") ;
     };
 
     Route.prototype.componentDidUpdate = function (prevProps) {
-        warning(!(this.props.location && !prevProps.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.')  ;
-        warning(!(!this.props.location && prevProps.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.')  ;
+       warning(!(this.props.location && !prevProps.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.') ;
+       warning(!(!this.props.location && prevProps.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.') ;
     };
   }
 
@@ -3309,7 +3312,7 @@
 
   function staticHandler(methodName) {
     return function () {
-         invariant(false, "You cannot %s with <StaticRouter>")   ;
+        invariant(false, "You cannot %s with <StaticRouter>")  ;
     };
   }
 
@@ -3409,13 +3412,13 @@
     };
 
     StaticRouter.prototype.componentDidMount = function () {
-        warning(!this.props.history, "<StaticRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { StaticRouter as Router }`.")  ;
+       warning(!this.props.history, "<StaticRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { StaticRouter as Router }`.") ;
     };
   }
+
   /**
    * The public API for rendering the first <Route> that matches.
    */
-
 
   var Switch =
   /*#__PURE__*/
@@ -3432,7 +3435,7 @@
       var _this = this;
 
       return React__default.createElement(context.Consumer, null, function (context) {
-        !context ?    invariant(false, "You should not use <Switch> outside a <Router>")    : void 0;
+        !context ?  invariant(false, "You should not use <Switch> outside a <Router>")  : void 0;
         var location = _this.props.location || context.location;
         var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
         // here because toArray adds keys to all child elements and we do not want
@@ -3465,14 +3468,14 @@
     };
 
     Switch.prototype.componentDidUpdate = function (prevProps) {
-        warning(!(this.props.location && !prevProps.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.')  ;
-        warning(!(!this.props.location && prevProps.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.')  ;
+       warning(!(this.props.location && !prevProps.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.') ;
+       warning(!(!this.props.location && prevProps.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.') ;
     };
   }
+
   /**
    * A public higher-order component to access the imperative API
    */
-
 
   function withRouter(Component) {
     var displayName = "withRouter(" + (Component.displayName || Component.name) + ")";
@@ -3482,7 +3485,7 @@
           remainingProps = _objectWithoutPropertiesLoose(props, ["wrappedComponentRef"]);
 
       return React__default.createElement(context.Consumer, null, function (context) {
-        !context ?    invariant(false, "You should not use <" + displayName + " /> outside a <Router>")    : void 0;
+        !context ?  invariant(false, "You should not use <" + displayName + " /> outside a <Router>")  : void 0;
         return React__default.createElement(Component, _extends({}, remainingProps, context, {
           ref: wrappedComponentRef
         }));
@@ -3502,35 +3505,31 @@
   }
 
   var useContext = React__default.useContext;
-
   function useHistory() {
     {
-      !(typeof useContext === "function") ?    invariant(false, "You must use React >= 16.8 in order to use useHistory()")    : void 0;
+      !(typeof useContext === "function") ?  invariant(false, "You must use React >= 16.8 in order to use useHistory()")  : void 0;
     }
 
     return useContext(context).history;
   }
-
   function useLocation() {
     {
-      !(typeof useContext === "function") ?    invariant(false, "You must use React >= 16.8 in order to use useLocation()")    : void 0;
+      !(typeof useContext === "function") ?  invariant(false, "You must use React >= 16.8 in order to use useLocation()")  : void 0;
     }
 
     return useContext(context).location;
   }
-
   function useParams() {
     {
-      !(typeof useContext === "function") ?    invariant(false, "You must use React >= 16.8 in order to use useParams()")    : void 0;
+      !(typeof useContext === "function") ?  invariant(false, "You must use React >= 16.8 in order to use useParams()")  : void 0;
     }
 
     var match = useContext(context).match;
     return match ? match.params : {};
   }
-
   function useRouteMatch(path) {
     {
-      !(typeof useContext === "function") ?    invariant(false, "You must use React >= 16.8 in order to use useRouteMatch()")    : void 0;
+      !(typeof useContext === "function") ?  invariant(false, "You must use React >= 16.8 in order to use useRouteMatch()")  : void 0;
     }
 
     var location = useLocation();
