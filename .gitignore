@@ -1,9 +1,6 @@
 node_modules/
 
-/.changelog/
-/cjs/
-/esm/
-/umd/
+#/cjs/
+#/esm/
+#/umd/
 
-/website-deploy-key
-/website-deploy-key.pub
