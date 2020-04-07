@@ -52,9 +52,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
  * The public API for a <Router> that uses HTML5 history.
  */
 
-var BrowserRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var BrowserRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
@@ -72,7 +70,7 @@ function (_React$Component) {
   var _proto = BrowserRouter.prototype;
 
   _proto.render = function render() {
-    return React.createElement(reactRouter.Router, {
+    return /*#__PURE__*/React.createElement(reactRouter.Router, {
       history: this.history,
       children: this.props.children
     });
@@ -99,9 +97,7 @@ function (_React$Component) {
  * The public API for a <Router> that uses window.location.hash.
  */
 
-var HashRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var HashRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(HashRouter, _React$Component);
 
   function HashRouter() {
@@ -119,7 +115,7 @@ function (_React$Component) {
   var _proto = HashRouter.prototype;
 
   _proto.render = function render() {
-    return React.createElement(reactRouter.Router, {
+    return /*#__PURE__*/React.createElement(reactRouter.Router, {
       history: this.history,
       children: this.props.children
     });
@@ -199,7 +195,7 @@ var LinkAnchor = forwardRef(function (_ref, forwardedRef) {
   /* eslint-disable-next-line jsx-a11y/anchor-has-content */
 
 
-  return React.createElement("a", props);
+  return /*#__PURE__*/React.createElement("a", props);
 });
 
 {
@@ -218,7 +214,7 @@ var Link = forwardRef(function (_ref2, forwardedRef) {
       innerRef = _ref2.innerRef,
       rest = _objectWithoutPropertiesLoose(_ref2, ["component", "replace", "to", "innerRef"]);
 
-  return React.createElement(reactRouter.__RouterContext.Consumer, null, function (context) {
+  return /*#__PURE__*/React.createElement(reactRouter.__RouterContext.Consumer, null, function (context) {
     !context ?  invariant(false, "You should not use <Link> outside a <Router>")  : void 0;
     var history = context.history;
     var location = normalizeToLocation(resolveToLocation(to, context.location), context.location);
@@ -299,7 +295,7 @@ var NavLink = forwardRef$1(function (_ref, forwardedRef) {
       innerRef = _ref.innerRef,
       rest = _objectWithoutPropertiesLoose(_ref, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "strict", "style", "to", "innerRef"]);
 
-  return React.createElement(reactRouter.__RouterContext.Consumer, null, function (context) {
+  return /*#__PURE__*/React.createElement(reactRouter.__RouterContext.Consumer, null, function (context) {
     !context ?  invariant(false, "You should not use <NavLink> outside a <Router>")  : void 0;
     var currentLocation = locationProp || context.location;
     var toLocation = normalizeToLocation(resolveToLocation(to, currentLocation), currentLocation);
@@ -329,7 +325,7 @@ var NavLink = forwardRef$1(function (_ref, forwardedRef) {
       props.innerRef = innerRef;
     }
 
-    return React.createElement(Link, props);
+    return /*#__PURE__*/React.createElement(Link, props);
   });
 });
 
